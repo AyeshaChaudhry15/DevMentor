@@ -117,7 +117,7 @@ const roles: RoleOption[] = [        {
                     </button>
                 </div>
                 <div className="flex justify-center mt-[21px]">
-                  <Link href="/login">
+                  <Link href="/">
                  <button type="button" className="w-[382px] max-w-full h-[45px] rounded-[6px] bg-[#52A898] hover:bg-[#479889] text-[#16202C] text-[16px] font-medium transition-colors">
                   Continue
                  </button>
@@ -127,7 +127,7 @@ const roles: RoleOption[] = [        {
                     Already have an account?{" "}
                     <a
                         href="/login"
-                        className="text-[#5B7FA6] hover:text-[#7194BA]">
+                      className="text-[#5B7FA6] hover:text-[#7194BA]">
                         Log in
                     </a>
                 </p>
