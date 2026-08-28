@@ -21,7 +21,7 @@ const Navbar = () => {
             Login
           </Link>
 
-          <Link href={'/getstarted'} className="rounded-lg bg-[#52A898] py-2 px-4 hover:scale-105 duration-300 ">
+          <Link href={'/signup'} className="rounded-lg bg-[#52A898] py-2 px-4 hover:scale-105 duration-300 ">
             Get Started
           </Link>
         </div>
