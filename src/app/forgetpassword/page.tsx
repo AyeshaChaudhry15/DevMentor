@@ -1,66 +1,34 @@
-import { Lock, CheckCircle2, Mail} from "lucide-react";
-import { CreditCard } from "lucide-react";
+import { Lock, Mail } from 'lucide-react';
+import { CreditCard } from 'lucide-react';
+import Link from 'next/link';
 
 const states = [
   {
-    badge: "STATE 01",
-    step: "Step 1: Request Reset",
+    badge: 'STATE 01',
+    step: 'Step 1: Request Reset',
     content: (
       <>
-        <div className="w-11 h-11 mx-auto mb-4 rounded-full bg-[#1C2333] flex items-center justify-center">
-          <Lock className="w-5 h-5 text-[#52A898]" strokeWidth={2} />
+        <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1C2333]">
+          <Lock className="h-5 w-5 text-[#52A898]" strokeWidth={2} />
         </div>
-        <h3 className="text-center font-semibold mb-1">Reset your password</h3>
-        <p className="text-center text-xs text-gray-400 mb-5">
+        <h3 className="mb-1 text-center font-semibold text-lg">Reset your password</h3>
+        <p className="mb-5 text-center text-sm text-gray-400">
           Enter your email and we'll send you a reset link
         </p>
 
-        <div className="flex items-center gap-2 bg-[#1a1e2b] border border-[#2a3042] rounded-lg px-3 py-2.5 mb-4">
-          <Mail className="w-4 h-4 text-gray-500" />
-          <span className="text-sm text-gray-300">zohaib@email.com</span>
+        <div className="mb-4 flex items-center gap-2 rounded-lg border border-[#2a3042] bg-[#1a1e2b] px-3 py-2.5">
+          <Mail className="h-4 w-4 text-gray-500" />
+          <span className="text-md text-gray-300">zohaib@email.com</span>
         </div>
 
-        <button className="w-full bg-[#52A898]  transition text-[#0c0f16] text-sm font-semibold py-2.5 rounded-lg mb-4 hover:scale-105 duration-300">
+        <Link
+          href="/forgetpassword2"
+          className="mb-4 flex w-full items-center justify-center rounded-lg bg-[#52A898] py-2.5 text-md font-semibold text-black transition duration-300 hover:scale-105"
+        >
           Send Reset Link →
-        </button>
+        </Link>
 
-        <a href="/login" className="block text-center text-xs text-[#52A898]">
-          ← Back to login
-        </a>
-      </>
-    ),
-  },
-  {
-    badge: "STATE 02",
-    step: "Step 2: Link Sent",
-    content: (
-      <>
-        <div className="w-11 h-11 mx-auto mb-4 rounded-full bg-[#1C2333] flex items-center justify-center">
-          <CheckCircle2 className="w-5 h-5 text-[#52A898]" strokeWidth={2} />
-        </div>
-        <h3 className="text-center font-semibold mb-1">Reset link sent</h3>
-        <p className="text-center text-xs text-gray-400 mb-5 px-2">
-          Check your email at{" "}
-          <span className="text-white font-medium">zohaib@email.com</span>.
-          The link expires in 15 minutes.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-3 mb-5 ">
-          <button className="flex-1 flex items-center justify-center gap-2 border border-[#52A898] text-gray-200 text-sm py-2.5 rounded-lg hover:bg-[#1a1e2b] transition ">
-            <Mail className="w-4 h-4" /> Open Gmail
-          </button>
-          <button className="flex-1 flex items-center justify-center gap-2 border border-[#52A898] text-gray-200 text-sm py-2.5 rounded-lg hover:bg-[#1a1e2b] transition">
-            <Mail className="w-4 h-4" /> Open Outlook
-          </button>
-        </div>
-
-        <p className="text-center text-xs text-gray-400 ">
-          Didn't receive the email?
-        </p>
-        <a href="#" className="block text-center text-xs text-[#52A898] pt-2 ">
-          Click to resend
-        </a>
-        <a href="/login" className="block text-center text-xs text-[#52A898] pt-3">
+        <a href="/login" className="block text-center text-md text-[#52A898]">
           ← Back to login
         </a>
       </>
@@ -70,40 +38,28 @@ const states = [
 
 export default function ForgotPasswordFlow() {
   return (
-      <div className="w-full mx-auto bg-[#1C2333] px-4 sm:px-9 pt-10 pb-10 text-white h-auto">
-        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-3 sm:gap-0 mb-2 text-center sm:text-left">
-          <div>
-            <h1 className="font-bold text-base">Forgot Password Flow</h1>
-            <p className="text-xs text-gray-500">State Reference Guide</p>
-          </div>
-          <div className="flex items-center gap-1 text-[#52A898] text-xs">
-            <CreditCard className="w-3.5 h-3.5" size={27} />
-            DEVMENTOR COMPONENT LIBRARY
-          </div>
-        </div>
+    <div className="flex min-h-screen w-full items-center justify-center bg-[#1C2333] px-4 py-10 text-white sm:px-9">
+      <div className="mx-auto w-full max-w-220">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6 w-full max-w-220 mx-auto">
+        <div className="grid grid-cols-1 mt-6 w-120 max-w-220 mx-auto">
           {states.map((state, index) => (
             <div key={index} className="text-center">
-              <span className="inline-block text-[10px] tracking-wide border border-[#2a3042] rounded-full px-3 py-2 mb-3 text-[#52A898]">
-                {state.badge}
-              </span>
-              <h2 className="text-sm font-semibold mb-3">{state.step}</h2>
+              <h2 className="mb-3 text-sm font-semibold">{state.step}</h2>
 
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <div className="w-6 h-6 rounded-md  flex items-center justify-center">
-                  <CreditCard className="w-80 text-[#52A898] "  />
+              <div className="mb-4 flex items-center justify-center gap-2">
+                <div className="flex h-6 w-6 items-center justify-center rounded-md">
+                  <CreditCard className="w-80 text-[#52A898]" />
                 </div>
                 <span className="font-semibold text-[#52A898]">DevMentor</span>
               </div>
 
-              <div className="bg-[#2A3447] border border-[#232838] rounded-xl p-6 text-left border-t-2 border-[#52A898]">
+              <div className="rounded-xl border border-t-2 border-[#52A898] border-[#232838] bg-[#2A3447] p-6 text-left">
                 {state.content}
               </div>
             </div>
           ))}
         </div>
       </div>
-   
+    </div>
   );
 }

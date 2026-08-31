@@ -11,7 +11,7 @@ import {
   Shield,
   Check,
 } from "lucide-react";
-
+import Link from "next/link";
 
 
 export default function SignupPage() {
@@ -105,10 +105,7 @@ export default function SignupPage() {
     setAvailability((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const finishSetup = () => {
-    console.log({ selectedRole, formData, photo, selectedSkills, experience, availability, timezone, sessionPref });
-    alert("Setup complete!");
-  };
+
 
  
   if (step === 1) {
@@ -663,11 +660,9 @@ export default function SignupPage() {
                   ← Back
                 </button>
                 <button
-                  type="button"
-                  onClick={finishSetup}
                   className="flex items-center gap-2 rounded-lg bg-[#52A898] px-5 py-2.5 text-[13px] font-bold text-[#05140f] hover:brightness-110"
                 >
-                  Finish Setup ✓
+                 <Link href={"/login"}> Finish Setup ✓</Link>
                 </button>
               </div>
             </div>
