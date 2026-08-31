@@ -45,7 +45,7 @@ const states = [
           The link expires in 15 minutes.
         </p>
 
-        <div className="flex gap-3 mb-5 ">
+        <div className="flex flex-col sm:flex-row gap-3 mb-5 ">
           <button className="flex-1 flex items-center justify-center gap-2 border border-[#52A898] text-gray-200 text-sm py-2.5 rounded-lg hover:bg-[#1a1e2b] transition ">
             <Mail className="w-4 h-4" /> Open Gmail
           </button>
@@ -70,8 +70,8 @@ const states = [
 
 export default function ForgotPasswordFlow() {
   return (
-      <div className="w-full mx-auto bg-[#1C2333] px-9 pt-10 pb-10 text-white h-150">
-        <div className="flex items-center justify-between mb-2">
+      <div className="w-full mx-auto bg-[#1C2333] px-4 sm:px-9 pt-10 pb-10 text-white h-auto">
+        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-3 sm:gap-0 mb-2 text-center sm:text-left">
           <div>
             <h1 className="font-bold text-base">Forgot Password Flow</h1>
             <p className="text-xs text-gray-500">State Reference Guide</p>
@@ -82,7 +82,7 @@ export default function ForgotPasswordFlow() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6 w-220 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6 w-full max-w-220 mx-auto">
           {states.map((state, index) => (
             <div key={index} className="text-center">
               <span className="inline-block text-[10px] tracking-wide border border-[#2a3042] rounded-full px-3 py-2 mb-3 text-[#52A898]">

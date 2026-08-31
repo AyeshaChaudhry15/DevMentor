@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useEffect,useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Cpu } from 'lucide-react';
 import { gsap } from 'gsap';
 
@@ -18,18 +18,18 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="flex h-170 items-center justify-center bg-[#1C2333]">
-      <div className="h-80 w-150">
-        <h1 className="text-5xl text-white">
+    <div className="flex flex-col lg:flex-row min-h-fit lg:h-170 items-center justify-center gap-10 lg:gap-0 bg-[#1C2333] px-6 py-16 lg:px-0 lg:py-0">
+      <div className="w-full max-w-150 lg:h-80">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl text-white text-center lg:text-left">
           Get Mentored by Senior Devs.{' '}
           <span className="text-[#52A898]">Reviewed by AI.</span>
         </h1>
-        <p className="w-130 pt-6 text-xl text-[#919CAD]">
+        <p className="w-full max-w-130 pt-6 text-base sm:text-lg lg:text-xl text-[#919CAD] text-center lg:text-left mx-auto lg:mx-0">
           Accelerate your engineering career by pairing world-class human mentor
           ship with instant AI code analysis.Build Faster ,write better code and
           level up with confidence.
         </p>
-        <div className="flex items-center gap-4 pt-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
           <Link
             href={'/signup'}
             className="rounded-lg bg-[#52A898] px-5 py-2 font-bold hover:scale-105 duration-300"
@@ -46,10 +46,10 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex h-150 w-150 justify-center py-8">
+      <div className="flex w-full max-w-150 lg:h-150 justify-center py-8">
         <div
           ref={cardRef}
-          className="h-120 w-[400px] rounded-2xl bg-[#2A3447] p-6"
+          className="h-auto w-full max-w-[400px] rounded-2xl bg-[#2A3447] p-6"
         >
           <div className="mb-6 flex items-center gap-2">
             <span>
@@ -101,7 +101,6 @@ const Hero = () => {
         </div>
       </div>
     </div>
-       
   );
 };
 
