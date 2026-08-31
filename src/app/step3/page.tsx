@@ -1,31 +1,43 @@
+'use client';
 
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import { CreditCard } from "lucide-react";
+import { useState } from 'react';
+import Link from 'next/link';
+import { CreditCard } from 'lucide-react';
 
 const ALL_SKILLS = [
-  "TypeScript", "JavaScript", "Python", "React", "NestJS", "Docker", "PostgreSQL",
-  "MongoDB", "AWS", "Redis", "GraphQL", "Prisma", "Git", "Linux", "Nginx",
+  'TypeScript',
+  'JavaScript',
+  'Python',
+  'React',
+  'NestJS',
+  'Docker',
+  'PostgreSQL',
+  'MongoDB',
+  'AWS',
+  'Redis',
+  'GraphQL',
+  'Prisma',
+  'Git',
+  'Linux',
+  'Nginx',
 ];
 
 const EXPERIENCE_LEVELS = [
-  { key: "junior", icon: "🌱", name: "Junior", range: "0-2 yrs" },
-  { key: "mid", icon: "💼", name: "Mid-level", range: "2-5 yrs" },
-  { key: "senior", icon: "🎖️", name: "Senior", range: "5+ yrs" },
+  { key: 'junior', icon: '🌱', name: 'Junior', range: '0-2 yrs' },
+  { key: 'mid', icon: '💼', name: 'Mid-level', range: '2-5 yrs' },
+  { key: 'senior', icon: '🎖️', name: 'Senior', range: '5+ yrs' },
 ];
 
-const DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-const SLOTS = ["Morning", "Afternoon", "Evening"];
+const DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+const SLOTS = ['Morning', 'Afternoon', 'Evening'];
 
 const DEFAULT_AVAILABILITY: Record<string, boolean> = {
-  "Afternoon-SAT": true,
-  "Afternoon-SUN": true,
-  "Evening-MON": true,
-  "Evening-TUE": true,
-  "Evening-WED": true,
-  "Evening-FRI": true,
+  'Afternoon-SAT': true,
+  'Afternoon-SUN': true,
+  'Evening-MON': true,
+  'Evening-TUE': true,
+  'Evening-WED': true,
+  'Evening-FRI': true,
 };
 
 const CheckIcon = () => (
@@ -58,20 +70,20 @@ const Step = ({
       <div
         className={`flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold ${
           active || completed
-            ? "border-[#52A898] bg-[#52A898] text-[#05140f]"
-            : "border-[#3C4F68] text-[#8b93a7]"
+            ? 'border-[#52A898] bg-[#52A898] text-[#05140f]'
+            : 'border-[#3C4F68] text-[#8b93a7]'
         }`}
       >
-        {completed ? "✓" : number}
+        {completed ? '✓' : number}
       </div>
 
-{!last && <div className="h-10 w-px bg-[#3C4F68]" />}
+      {!last && <div className="h-10 w-px bg-[#3C4F68]" />}
     </div>
 
     <div className="pt-1">
       <p
         className={`text-[13px] font-semibold ${
-          active ? "text-[#E8EBF2]" : "text-[#8b93a7]"
+          active ? 'text-[#E8EBF2]' : 'text-[#8b93a7]'
         }`}
       >
         {title}
@@ -82,16 +94,15 @@ const Step = ({
 
 export default function SkillsExperiencePage() {
   const [selectedSkills, setSelectedSkills] = useState<Set<string>>(
-    new Set(["TypeScript", "React", "NestJS"])
+    new Set(['TypeScript', 'React', 'NestJS']),
   );
   const [customSkills, setCustomSkills] = useState<string[]>([]);
-  const [customInput, setCustomInput] = useState("");
-  const [experience, setExperience] = useState("senior");
-  const [availability, setAvailability] = useState<Record<string, boolean>>(
-    DEFAULT_AVAILABILITY
-  );
-  const [timezone, setTimezone] = useState("PST · Pacific Standard Time");
-  const [sessionPref, setSessionPref] = useState<"1on1" | "group">("1on1");
+  const [customInput, setCustomInput] = useState('');
+  const [experience, setExperience] = useState('senior');
+  const [availability, setAvailability] =
+    useState<Record<string, boolean>>(DEFAULT_AVAILABILITY);
+  const [timezone, setTimezone] = useState('PST · Pacific Standard Time');
+  const [sessionPref, setSessionPref] = useState<'1on1' | 'group'>('1on1');
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills((prev) => {
@@ -106,7 +117,7 @@ export default function SkillsExperiencePage() {
     if (!val) return;
     setCustomSkills((prev) => [...prev, val]);
     setSelectedSkills((prev) => new Set(prev).add(val));
-    setCustomInput("");
+    setCustomInput('');
   };
 
   const toggleCell = (slot: string, day: string) => {
@@ -126,28 +137,15 @@ export default function SkillsExperiencePage() {
         </div>
 
         <div className="px-7 pt-8">
-        <Step
-  number={1}
-  title="Choose Role"
-  completed
-/>
+          <Step number={1} title="Choose Role" completed />
 
-<Step
-  number={2}
-  title="Your Profile"
-  completed
-/>
+          <Step number={2} title="Your Profile" completed />
 
-<Step
-  number={3}
-  title="Skills & Experience"
-  last
-  active
-/>
+          <Step number={3} title="Skills & Experience" last active />
         </div>
       </aside>
 
-      <main className="w-full flex-1 px-6 pb-6 pt-8 md:px-10">
+      <main className="w-full flex-1 px-6 pt-8 pb-6 md:px-10">
         <div className="mb-1 text-[13px] font-bold tracking-wide text-[#52A898]">
           Complete Your Profile
         </div>
@@ -157,7 +155,7 @@ export default function SkillsExperiencePage() {
 
         <div className="mb-5 rounded-2xl border border-[#232b3a] bg-[#2A3447] p-6">
           <div className="mb-4 flex items-center gap-2 text-sm font-semibold">
-            <span className="text-[#52A898]">{"</>"}</span>
+            <span className="text-[#52A898]">{'</>'}</span>
             What technologies do you work with?
           </div>
 
@@ -168,10 +166,10 @@ export default function SkillsExperiencePage() {
                 <button
                   key={skill}
                   onClick={() => toggleSkill(skill)}
-                  className={`select-none rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors ${
+                  className={`rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors select-none ${
                     active
-                      ? "border-[#52A898] bg-[#34d3990f] text-[#8b93a7]"
-                      : "border-[#2a3346] bg-[#1a2232] text-[#8b93a7] hover:text-[#e7eaf0]"
+                      ? 'border-[#52A898] bg-[#34d3990f] text-[#8b93a7]'
+                      : 'border-[#2a3346] bg-[#1a2232] text-[#8b93a7] hover:text-[#e7eaf0]'
                   }`}
                 >
                   {skill}
@@ -183,10 +181,10 @@ export default function SkillsExperiencePage() {
               <button
                 key={skill}
                 onClick={() => toggleSkill(skill)}
-                className={`select-none rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors ${
+                className={`rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors select-none ${
                   selectedSkills.has(skill)
-                    ? "border-[#52A898] bg-[#34d3991f] text-[#52A898]"
-                    : "border-[#2a3346] bg-[#1a2232] text-[#8b93a7] hover:text-[#e7eaf0]"
+                    ? 'border-[#52A898] bg-[#34d3991f] text-[#52A898]'
+                    : 'border-[#2a3346] bg-[#1a2232] text-[#8b93a7] hover:text-[#e7eaf0]'
                 }`}
               >
                 {skill}
@@ -199,7 +197,7 @@ export default function SkillsExperiencePage() {
               type="text"
               value={customInput}
               onChange={(e) => setCustomInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && addCustomSkill()}
+              onKeyDown={(e) => e.key === 'Enter' && addCustomSkill()}
               placeholder="Add custom skill..."
               className="flex-1 rounded-lg border border-[#2a3346] bg-[#161c29] px-3 py-2 text-[13px] text-[#e7eaf0] outline-none placeholder:text-[#5b6478] focus:border-[#34d39966]"
             />
@@ -226,12 +224,12 @@ export default function SkillsExperiencePage() {
                   onClick={() => setExperience(level.key)}
                   className={`relative rounded-xl border p-4 text-center transition-colors ${
                     active
-                      ? "border-[#52A898] bg-[#34d3990f]"
-                      : "border-[#2a3346] bg-[#161c29]"
+                      ? 'border-[#52A898] bg-[#34d3990f]'
+                      : 'border-[#2a3346] bg-[#161c29]'
                   }`}
                 >
                   {active && (
-                    <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#52A898] text-[#05140f]">
+                    <span className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#52A898] text-[#05140f]">
                       <CheckIcon />
                     </span>
                   )}
@@ -285,11 +283,11 @@ export default function SkillsExperiencePage() {
                           onClick={() => toggleCell(slot, day)}
                           className={`flex h-[30px] w-full items-center justify-center rounded-md border text-xs transition-colors ${
                             on
-                              ? "border-[#34d399] bg-[#34d39924] text-[#52A898]"
-                              : "border-[#2a3346] bg-[#161c29] hover:bg-[#1b2233]"
+                              ? 'border-[#34d399] bg-[#34d39924] text-[#52A898]'
+                              : 'border-[#2a3346] bg-[#161c29] hover:bg-[#1b2233]'
                           }`}
                         >
-                          {on ? "✓" : ""}
+                          {on ? '✓' : ''}
                         </button>
                       </td>
                     );
@@ -301,9 +299,7 @@ export default function SkillsExperiencePage() {
 
           <div className="mt-5 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <span className="mb-2 block text-xs font-semibold">
-                Timezone
-              </span>
+              <span className="mb-2 block text-xs font-semibold">Timezone</span>
 
               <select
                 value={timezone}
@@ -326,22 +322,22 @@ export default function SkillsExperiencePage() {
 
               <div className="flex gap-2">
                 <button
-                  onClick={() => setSessionPref("1on1")}
+                  onClick={() => setSessionPref('1on1')}
                   className={`flex items-center gap-1.5 rounded-lg border px-4 py-2 text-[12.5px] font-semibold ${
-                    sessionPref === "1on1"
-                      ? "border-[#34d39966] bg-[#34d3991f] text-[#52A898]"
-                      : "border-[#2a3346] bg-[#161c29] text-[#8b93a7]"
+                    sessionPref === '1on1'
+                      ? 'border-[#34d39966] bg-[#34d3991f] text-[#52A898]'
+                      : 'border-[#2a3346] bg-[#161c29] text-[#8b93a7]'
                   }`}
                 >
                   👤 1 on 1
                 </button>
 
                 <button
-                  onClick={() => setSessionPref("group")}
+                  onClick={() => setSessionPref('group')}
                   className={`flex items-center gap-1.5 rounded-lg border px-4 py-2 text-[12.5px] font-semibold ${
-                    sessionPref === "group"
-                      ? "border-[#34d39966] bg-[#34d3991f] text-[#52A898]"
-                      : "border-[#2a3346] bg-[#161c29] text-[#8b93a7]"
+                    sessionPref === 'group'
+                      ? 'border-[#34d39966] bg-[#34d3991f] text-[#52A898]'
+                      : 'border-[#2a3346] bg-[#161c29] text-[#8b93a7]'
                   }`}
                 >
                   👥 Group
@@ -360,7 +356,7 @@ export default function SkillsExperiencePage() {
           </Link>
 
           <Link
-            href="/step4"
+            href="/login"
             className="flex items-center gap-2 rounded-lg bg-[#52A898] px-5 py-2.5 text-[13px] font-bold text-[#05140f] hover:brightness-110"
           >
             Finish Setup ✓
@@ -370,4 +366,3 @@ export default function SkillsExperiencePage() {
     </div>
   );
 }
-

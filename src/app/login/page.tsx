@@ -92,12 +92,12 @@ export default function LoginPage() {
                 Forgot password?
               </Link>
             </div>
-            <button
-              type="submit"
-              className="h-10 w-full rounded-lg bg-[#52A898] text-[15px] font-medium text-[#16202C] transition hover:bg-[#479889]"
-            >
-              Log In
-            </button>
+           <Link
+  href="/welcome"
+  className="flex h-10 w-full items-center justify-center rounded-lg bg-[#52A898] text-[15px] font-medium text-[#16202C] transition hover:bg-[#479889]"
+>
+  Log In
+</Link>
           </form>
           <p className="mt-5 text-center text-xs text-[#A8B2C4]">
             Don't have an account?{' '}

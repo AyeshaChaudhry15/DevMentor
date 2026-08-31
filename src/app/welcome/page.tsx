@@ -23,7 +23,7 @@ const cards = [
 
 export default function Welcome() {
   return (
-    <div className="mx-auto h-140 w-full bg-[#1C2333] px-10 pt-11 pb-8 text-center text-white">
+    <div className="mx-auto min-h-screen w-full bg-[#1C2333] px-10 pt-11 pb-8 text-center text-white">
       <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#52A898]">
         <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={3} />
       </div>
@@ -60,13 +60,18 @@ export default function Welcome() {
         Go to Dashboard
       </a>
 
-      <div className="flex items-center gap-3 text-xs text-gray-400 w-180 mx-auto">
-        <span>Profile Completion</span>
-        <div className="h-[5px] overflow-hidden rounded-full bg-[#262b3a]">
-          <div className="h-full bg-[#52A898]" style={{ width: '60%' }} />
-        </div>
-        <span>60%</span>
-      </div>
+    <div className="mx-auto flex w-[720px] max-w-full items-center gap-3 text-xs text-gray-400">
+  <span>Profile Completion</span>
+
+  <div className="h-[5px] flex-1 overflow-hidden rounded-full bg-[#262b3a]">
+    <div
+      className="h-full bg-[#52A898]"
+      style={{ width: "60%" }}
+    />
+  </div>
+
+  <span>60%</span>
+</div>
     </div>
   );
 }
