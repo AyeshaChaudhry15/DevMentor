@@ -8,8 +8,7 @@ import {
   Users,
   CalendarDays,
   Star,
-  FileTerminal,
-} from 'lucide-react';
+CreditCard} from 'lucide-react';
 import Link from 'next/link';
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,10 +18,10 @@ export default function LoginPage() {
       <div className="grid min-h-[650px] w-full max-w-[1100px] grid-cols-1 overflow-hidden shadow-2xl lg:grid-cols-[45%_55%]">
         <section className="flex flex-col bg-[#1C2333] px-8 py-8 lg:px-[54px]">
           <div className="mb-12 flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-[4px] bg-[#52A898]">
-              <FileTerminal size={17} className="text-[#1C2333]" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-[4px] ">
+              <CreditCard size={27} color="#52A898" /> 
             </div>
-            <span className="text-xl font-semibold text-[#E8EBF2]">
+            <span className="text-xl font-semibold text-[#52A898]">
               DevMentor
             </span>
           </div>

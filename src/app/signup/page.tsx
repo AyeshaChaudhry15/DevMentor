@@ -1,6 +1,6 @@
 "use client";
 
-import { Sprout, Shield, Check, FileTerminal  } from "lucide-react";
+import { Sprout, Shield, Check, FileTerminal, CreditCard  } from "lucide-react";
 import { useState } from "react";
 import type { ElementType } from "react";
 import Link from "next/link";
@@ -45,8 +45,8 @@ const roles: RoleOption[] = [        {
         <main className="min-h-screen bg-[#1C2333] text-[#E8EBF2]">
             <div className="mx-auto w-full max-w-[763px] px-4 pt-[38px] pb-8">
                <div className="flex justify-center items-center gap-[7px]">
-                    <FileTerminal  size={20} className="text-[#52A898]"/>
-                    <span className="text-[20px] leading-none font-semibold text-[#E8EBF2]">
+                    <CreditCard  size={27} className="text-[#52A898]"/>
+                    <span className="text-[20px] leading-none font-semibold text-[#52A898]">
                         DevMentor
                     </span>
                 </div>
@@ -117,11 +117,11 @@ const roles: RoleOption[] = [        {
                     </button>
                 </div>
                 <div className="flex justify-center mt-[21px]">
-                  <Link href="/step2">
+                  
                  <button type="button" className="w-[382px] max-w-full h-[45px] rounded-[6px] bg-[#52A898] hover:bg-[#479889] text-[#16202C] text-[16px] font-medium transition-colors">
                   <Link href={"/step2"}>Continue</Link>
                  </button>
-                  </Link>
+                 
                 </div>
                 <p className="text-center mt-[21px] text-[12px]  text-[#A8B2C4]">
                     Already have an account?{" "}
