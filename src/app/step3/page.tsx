@@ -1,7 +1,9 @@
+
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
+import { CreditCard } from "lucide-react";
 
 const ALL_SKILLS = [
   "TypeScript", "JavaScript", "Python", "React", "NestJS", "Docker", "PostgreSQL",
@@ -36,6 +38,46 @@ const CheckIcon = () => (
       strokeLinejoin="round"
     />
   </svg>
+);
+
+const Step = ({
+  number,
+  title,
+  active = false,
+  completed = false,
+  last = false,
+}: {
+  number: number;
+  title: string;
+  active?: boolean;
+  completed?: boolean;
+  last?: boolean;
+}) => (
+  <div className="flex gap-3">
+    <div className="flex flex-col items-center">
+      <div
+        className={`flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold ${
+          active || completed
+            ? "border-[#52A898] bg-[#52A898] text-[#05140f]"
+            : "border-[#3C4F68] text-[#8b93a7]"
+        }`}
+      >
+        {completed ? "✓" : number}
+      </div>
+
+{!last && <div className="h-10 w-px bg-[#3C4F68]" />}
+    </div>
+
+    <div className="pt-1">
+      <p
+        className={`text-[13px] font-semibold ${
+          active ? "text-[#E8EBF2]" : "text-[#8b93a7]"
+        }`}
+      >
+        {title}
+      </p>
+    </div>
+  </div>
 );
 
 export default function SkillsExperiencePage() {
@@ -74,44 +116,35 @@ export default function SkillsExperiencePage() {
 
   return (
     <div className="flex min-h-screen bg-[#1C2333] text-[#e7eaf0]">
-      <aside className="hidden w-[220px] shrink-0 border-r border-[#232b3a] p-7 px-5 md:block">
-        <div className="mb-9 text-[13px] font-semibold tracking-wide text-[#8b93a7]">
-          DevMentor
+      <aside className="hidden w-[260px] shrink-0 bg-[#2A3447] md:block">
+        <div className="flex items-center gap-2 px-7 py-6">
+          <CreditCard size={27} color="#52A898" />
+
+          <span className="text-sm font-semibold text-[#52A898]">
+            DevMentor
+          </span>
         </div>
-        <ul className="relative m-0 list-none p-0">
-          {[
-            { label: "Choose Role", status: "done" },
-            { label: "Your Profile", status: "done" },
-            { label: "Skills & Experience", status: "active" },
-            { label: "Availability", status: "todo" },
-          ].map((step, i, arr) => (
-            <li
-              key={step.label}
-              className={`relative pb-8 pl-9 text-sm font-semibold last:pb-0 ${
-                step.status === "todo" ? "text-[#5b6478]" : "text-[#52A898]"
-              }`}
-            >
-              {i !== arr.length - 1 && (
-                <span className="absolute left-[9px] top-5 h-[calc(100%-6px)] w-px bg-[#2a3346]" />
-              )}
-              <span
-                className={`absolute left-0 top-px flex h-5 w-5 items-center justify-center rounded-full ${
-                  step.status === "done"
-                    ? "bg-[#34d399] text-[#05140f]"
-                    : step.status === "active"
-                    ? "border-2 border-[#52A898] bg-transparent"
-                    : "border-2 border-[#2a3346] bg-transparent"
-                }`}
-              >
-                {step.status === "done" && <CheckIcon />}
-                {step.status === "active" && (
-                  <span className="h-2 w-2 rounded-full bg-[#52A898]" />
-                )}
-              </span>
-              {step.label}
-            </li>
-          ))}
-        </ul>
+
+        <div className="px-7 pt-8">
+        <Step
+  number={1}
+  title="Choose Role"
+  completed
+/>
+
+<Step
+  number={2}
+  title="Your Profile"
+  completed
+/>
+
+<Step
+  number={3}
+  title="Skills & Experience"
+  last
+  active
+/>
+        </div>
       </aside>
 
       <main className="w-full flex-1 px-6 pb-6 pt-8 md:px-10">
@@ -122,13 +155,13 @@ export default function SkillsExperiencePage() {
           Let mentees know what you excel at and when you&apos;re free.
         </p>
 
-        <div className="mb-5 rounded-2xl border border-[#232b3a] bg-[#2A3447] p-6 ">
+        <div className="mb-5 rounded-2xl border border-[#232b3a] bg-[#2A3447] p-6">
           <div className="mb-4 flex items-center gap-2 text-sm font-semibold">
-            <span className="text-[#34d399]">{"</>"}</span>
+            <span className="text-[#52A898]">{"</>"}</span>
             What technologies do you work with?
           </div>
 
-          <div className="mb-2 flex flex-wrap gap-2 ">
+          <div className="mb-2 flex flex-wrap gap-2">
             {ALL_SKILLS.map((skill) => {
               const active = selectedSkills.has(skill);
               return (
@@ -145,6 +178,7 @@ export default function SkillsExperiencePage() {
                 </button>
               );
             })}
+
             {customSkills.map((skill) => (
               <button
                 key={skill}
@@ -182,6 +216,7 @@ export default function SkillsExperiencePage() {
           <div className="mb-3 text-[13px] font-semibold">
             Total Industry Experience
           </div>
+
           <div className="grid grid-cols-3 gap-3">
             {EXPERIENCE_LEVELS.map((level) => {
               const active = experience === level.key;
@@ -200,6 +235,7 @@ export default function SkillsExperiencePage() {
                       <CheckIcon />
                     </span>
                   )}
+
                   <div className="mb-2 text-lg opacity-80">{level.icon}</div>
                   <div className="text-[13px] font-semibold">{level.name}</div>
                   <div className="mt-0.5 text-[11.5px] text-[#5b6478]">
@@ -211,7 +247,7 @@ export default function SkillsExperiencePage() {
           </div>
         </div>
 
-        <div className="mb-5 rounded-2xl border border-[#232b3a] bg-[#2A3447] p-6 ">
+        <div className="mb-5 rounded-2xl border border-[#232b3a] bg-[#2A3447] p-6">
           <div className="mb-4 flex items-center gap-2 text-sm font-semibold">
             <span>📅</span>
             When are you available?
@@ -221,6 +257,7 @@ export default function SkillsExperiencePage() {
             <thead>
               <tr>
                 <th className="w-[90px]" />
+
                 {DAYS.map((day) => (
                   <th
                     key={day}
@@ -231,14 +268,17 @@ export default function SkillsExperiencePage() {
                 ))}
               </tr>
             </thead>
+
             <tbody>
               {SLOTS.map((slot) => (
                 <tr key={slot}>
                   <td className="text-[12.5px] font-medium text-[#8b93a7]">
                     {slot}
                   </td>
+
                   {DAYS.map((day) => {
                     const on = !!availability[`${slot}-${day}`];
+
                     return (
                       <td key={day} className="p-1 text-center">
                         <button
@@ -264,6 +304,7 @@ export default function SkillsExperiencePage() {
               <span className="mb-2 block text-xs font-semibold">
                 Timezone
               </span>
+
               <select
                 value={timezone}
                 onChange={(e) => setTimezone(e.target.value)}
@@ -282,6 +323,7 @@ export default function SkillsExperiencePage() {
               <span className="mb-2 block text-xs font-semibold">
                 Session Preferences
               </span>
+
               <div className="flex gap-2">
                 <button
                   onClick={() => setSessionPref("1on1")}
@@ -293,6 +335,7 @@ export default function SkillsExperiencePage() {
                 >
                   👤 1 on 1
                 </button>
+
                 <button
                   onClick={() => setSessionPref("group")}
                   className={`flex items-center gap-1.5 rounded-lg border px-4 py-2 text-[12.5px] font-semibold ${
@@ -309,14 +352,22 @@ export default function SkillsExperiencePage() {
         </div>
 
         <div className="mt-1 flex items-center justify-between border-t border-[#232b3a] pt-5">
-          <button >
-           <Link href={"/step2"} className="flex items-center gap-1.5 text-[13px] font-semibold text-[#8b93a7] hover:text-[#e7eaf0]"> ← Back</Link>
-          </button>
-          <button className="flex items-center gap-2 rounded-lg bg-[#52A898] px-5 py-2.5 text-[13px] font-bold text-[#05140f] hover:brightness-110">
+          <Link
+            href="/step2"
+            className="flex items-center gap-1.5 text-[13px] font-semibold text-[#8b93a7] hover:text-[#e7eaf0]"
+          >
+            ← Back
+          </Link>
+
+          <Link
+            href="/step4"
+            className="flex items-center gap-2 rounded-lg bg-[#52A898] px-5 py-2.5 text-[13px] font-bold text-[#05140f] hover:brightness-110"
+          >
             Finish Setup ✓
-          </button>
+          </Link>
         </div>
       </main>
     </div>
   );
 }
+

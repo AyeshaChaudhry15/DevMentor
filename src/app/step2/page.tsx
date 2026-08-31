@@ -1,8 +1,8 @@
+
 "use client";
 
 import { useRef, useState } from "react";
 import {
-  Check,
   ChevronRight,
   Upload,
   AtSign,
@@ -10,6 +10,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import Link from "next/link";
+
 export default function ProfileSetup() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -44,11 +45,9 @@ export default function ProfileSetup() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1C2333] text-[#E8EBF2] p-4 md:p-6">
+    <div className="min-h-screen bg-[#1C2333] p-4 text-[#E8EBF2] md:p-6">
       <div className="mx-auto flex min-h-[calc(100vh-48px)] max-w-[1400px] overflow-hidden rounded-lg border border-[#3C4F68] bg-[#1C2333]">
-
         <aside className="hidden w-[260px] shrink-0 bg-[#2A3447] md:block">
-
           <div className="flex items-center gap-2 px-7 py-6">
             <CreditCard size={27} color="#52A898" />
 
@@ -58,7 +57,6 @@ export default function ProfileSetup() {
           </div>
 
           <div className="px-7 pt-8">
-
             <Step
               number={1}
               title="Choose Role"
@@ -74,21 +72,13 @@ export default function ProfileSetup() {
             <Step
               number={3}
               title="Skills & Experience"
-            />
-
-            <Step
-              number={4}
-              title="Availability"
               last
             />
-
           </div>
         </aside>
 
         <main className="flex min-w-0 flex-1 flex-col">
-
           <div className="flex-1 overflow-y-auto px-6 py-8 md:px-12 lg:px-16">
-
             <div className="mb-7">
               <h1 className="text-xl font-semibold text-[#E8EBF2] md:text-2xl">
                 Set up your profile
@@ -100,7 +90,6 @@ export default function ProfileSetup() {
             </div>
 
             <div className="mb-8 flex flex-col items-center">
-
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
@@ -141,7 +130,6 @@ export default function ProfileSetup() {
             </div>
 
             <div className="grid grid-cols-1 gap-x-7 gap-y-5 md:grid-cols-2">
-
               <InputField
                 label="Full Name"
                 name="fullName"
@@ -200,11 +188,9 @@ export default function ProfileSetup() {
                 onChange={handleChange}
                 icon={<Cat size={15} />}
               />
-
             </div>
 
             <div className="mt-5">
-
               <label className="mb-2 block text-[13px] text-[#A8B2C4]">
                 Bio
               </label>
@@ -217,35 +203,32 @@ export default function ProfileSetup() {
                 rows={4}
                 className="w-full resize-none rounded-lg border border-[#3C4F68] bg-[#2A3447] px-4 py-3 text-sm text-[#E8EBF2] outline-none placeholder:text-[#A8B2C4] focus:border-[#52A898]"
               />
-
             </div>
-
           </div>
 
           <div className="flex items-center justify-between border-t border-[#3C4F68] bg-[#1C2333] px-6 py-4 md:px-8">
-<Link
-  href="/signup"
-  className="rounded-md border border-[#3C4F68] px-5 py-2 text-sm text-[#E8EBF2] transition hover:bg-[#2A3447]"
->
-  Back
-</Link>
+            <Link
+              href="/signup"
+              className="rounded-md border border-[#3C4F68] px-5 py-2 text-sm text-[#E8EBF2] transition hover:bg-[#2A3447]"
+            >
+              Back
+            </Link>
 
-         <Link
-  href="/step3"
-  className="flex items-center gap-2 rounded-md bg-[#52A898] px-5 py-2 text-sm font-medium text-[#16202C] transition hover:bg-[#479889]"
->
-  Save & Continue
-  <ChevronRight size={16} />
-</Link>
-
+            <Link
+              href="/step3"
+              className="flex items-center gap-2 rounded-md bg-[#52A898] px-5 py-2 text-sm font-medium text-[#16202C] transition hover:bg-[#479889]"
+            >
+              Save & Continue
+              <ChevronRight size={16} />
+            </Link>
           </div>
-
         </main>
       </div>
     </div>
   );
 }
-function Step({
+
+const Step = ({
   number,
   title,
   active = false,
@@ -257,56 +240,35 @@ function Step({
   active?: boolean;
   completed?: boolean;
   last?: boolean;
-}) {
-  return (
-    <div className="relative flex gap-4">
-
-      {!last && (
-        <div className="absolute left-[14px] top-[30px] h-[55px] w-px bg-[#3C4F68]" />
-      )}
-
+}) => (
+  <div className="flex gap-3">
+    <div className="flex flex-col items-center">
       <div
-        className={`relative z-10 flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full text-xs font-medium
-          ${
-            active
-              ? "bg-[#52A898] text-[#16202C]"
-              : completed
-              ? "bg-[#111827] text-[#52A898]"
-              : "border border-[#53647D] bg-[#1C2333] text-[#E8EBF2]"
-          }
-        `}
+        className={`flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold ${
+          completed
+            ? "border-[#52A898] bg-[#52A898] text-[#05140f]"
+            : active
+            ? "border-[#52A898] bg-[#52A898] text-[#05140f]"
+            : "border-[#3C4F68] text-[#8b93a7]"
+        }`}
       >
-        {completed ? <Check size={15} /> : number}
+        {completed ? "✓" : number}
       </div>
 
-      <div className="pb-10 pt-1">
-        <p
-          className={`text-xs ${
-            active
-              ? "font-semibold text-[#52A898]"
-              : "text-[#E8EBF2]"
-          }`}
-        >
-          Step {number}
-        </p>
-
-        <p
-          className={`mt-0.5 text-xs ${
-            active
-              ? "font-semibold text-[#E8EBF2]"
-              : "text-[#A8B2C4]"
-          }`}
-        >
-          {title}
-        </p>
-      </div>
-
+      {!last && <div className="h-10 w-px bg-[#3C4F68]" />}
     </div>
-  );
-}
 
-
-
+    <div className="pt-1">
+      <p
+        className={`text-[13px] font-semibold ${
+          active ? "text-[#E8EBF2]" : "text-[#8b93a7]"
+        }`}
+      >
+        {title}
+      </p>
+    </div>
+  </div>
+);
 
 function InputField({
   label,
@@ -327,13 +289,11 @@ function InputField({
 }) {
   return (
     <div>
-
       <label className="mb-2 block text-[13px] text-[#A8B2C4]">
         {label}
       </label>
 
       <div className="relative">
-
         {icon && (
           <div className="absolute left-0 top-0 flex h-full w-10 items-center justify-center border-r border-[#3C4F68] text-[#A8B2C4]">
             {icon}
@@ -350,9 +310,7 @@ function InputField({
             icon ? "pl-12 pr-4" : "px-4"
           }`}
         />
-
       </div>
-
     </div>
   );
 }
