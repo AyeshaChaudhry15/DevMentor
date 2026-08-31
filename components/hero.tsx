@@ -31,14 +31,14 @@ const Hero = () => {
         </p>
         <div className="flex items-center gap-4 pt-6">
           <Link
-            href={'/findmentor'}
+            href={'/signup'}
             className="rounded-lg bg-[#52A898] px-5 py-2 font-bold hover:scale-105 duration-300"
           >
             Find a Mentor
           </Link>
 
           <Link
-            href={'/becomementor'}
+            href={'/signup'}
             className="rounded-lg border-2 border-[#919CAD] px-4 py-2 text-white hover:scale-105 duration-300 hover:border-[#52A898] hover:text-[#52A898]"
           >
             Become a Mentor
