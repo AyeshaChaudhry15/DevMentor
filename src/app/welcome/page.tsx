@@ -62,7 +62,7 @@ export default function Welcome() {
 
       <div className="flex items-center gap-3 text-xs text-gray-400 w-180 mx-auto">
         <span>Profile Completion</span>
-        <div className="h-[5px] flex-grow overflow-hidden rounded-full bg-[#262b3a]">
+        <div className="h-[5px] overflow-hidden rounded-full bg-[#262b3a]">
           <div className="h-full bg-[#52A898]" style={{ width: '60%' }} />
         </div>
         <span>60%</span>
