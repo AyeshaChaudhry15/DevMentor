@@ -89,9 +89,7 @@ export default function EmailVerification() {
   return (
     <main className="min-h-screen  flex items-center justify-center px-4 relative overflow-hidden">
 
-    
-
-      
+  
       <div className="relative z-10 w-full max-w-[480px]">
 
         

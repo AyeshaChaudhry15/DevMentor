@@ -1,4 +1,5 @@
-import { Lock, CheckCircle2, Mail, Code2 } from "lucide-react";
+import { Lock, CheckCircle2, Mail} from "lucide-react";
+import { CreditCard } from "lucide-react";
 
 const states = [
   {
@@ -6,7 +7,7 @@ const states = [
     step: "Step 1: Request Reset",
     content: (
       <>
-        <div className="w-11 h-11 mx-auto mb-4 rounded-full bg-[#20263a] flex items-center justify-center">
+        <div className="w-11 h-11 mx-auto mb-4 rounded-full bg-[#1C2333] flex items-center justify-center">
           <Lock className="w-5 h-5 text-[#52A898]" strokeWidth={2} />
         </div>
         <h3 className="text-center font-semibold mb-1">Reset your password</h3>
@@ -34,7 +35,7 @@ const states = [
     step: "Step 2: Link Sent",
     content: (
       <>
-        <div className="w-11 h-11 mx-auto mb-4 rounded-full bg-[#20263a] flex items-center justify-center">
+        <div className="w-11 h-11 mx-auto mb-4 rounded-full bg-[#1C2333] flex items-center justify-center">
           <CheckCircle2 className="w-5 h-5 text-[#52A898]" strokeWidth={2} />
         </div>
         <h3 className="text-center font-semibold mb-1">Reset link sent</h3>
@@ -69,14 +70,14 @@ const states = [
 
 export default function ForgotPasswordFlow() {
   return (
-      <div className="w-full mx-auto bg-[#0c0f16] px-9 pt-10 pb-10 text-white h-150">
+      <div className="w-full mx-auto bg-[#1C2333] px-9 pt-10 pb-10 text-white h-150">
         <div className="flex items-center justify-between mb-2">
           <div>
             <h1 className="font-bold text-base">Forgot Password Flow</h1>
             <p className="text-xs text-gray-500">State Reference Guide</p>
           </div>
           <div className="flex items-center gap-1 text-[#52A898] text-xs">
-            <Code2 className="w-3.5 h-3.5" />
+            <CreditCard className="w-3.5 h-3.5" size={27} />
             DEVMENTOR COMPONENT LIBRARY
           </div>
         </div>
@@ -90,10 +91,10 @@ export default function ForgotPasswordFlow() {
               <h2 className="text-sm font-semibold mb-3">{state.step}</h2>
 
               <div className="flex items-center justify-center gap-2 mb-4">
-                <div className="w-6 h-6 rounded-md bg-[#52A898] flex items-center justify-center">
-                  <Code2 className="w-3.5 h-3.5 text-[#0c0f16]" />
+                <div className="w-6 h-6 rounded-md  flex items-center justify-center">
+                  <CreditCard className="w-80 text-[#52A898] "  />
                 </div>
-                <span className="font-semibold">DevMentor</span>
+                <span className="font-semibold text-[#52A898]">DevMentor</span>
               </div>
 
               <div className="bg-[#2A3447] border border-[#232838] rounded-xl p-6 text-left border-t-2 border-[#52A898]">
